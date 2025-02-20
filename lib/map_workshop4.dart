@@ -11,7 +11,8 @@ class SaveLocation extends StatefulWidget {
 
 class _SaveLocationState extends State<SaveLocation> {
   GoogleMapController? _mapController;
-  LatLng _currentPosition = LatLng(17.4517, 102.9311); // Initial position in Thailand
+  LatLng _initialPosition = LatLng(17.4517, 102.9311); // Initial position in Thailand
+  LatLng _currentPosition = LatLng(17.4517, 102.9311);
   Set<Marker> _markers = {};
 
   @override
@@ -85,7 +86,7 @@ class _SaveLocationState extends State<SaveLocation> {
       body: Stack(
         children: [
           GoogleMap(
-            initialCameraPosition: CameraPosition(target: _currentPosition, zoom: 15),
+            initialCameraPosition: CameraPosition(target: _initialPosition, zoom: 15),
             onMapCreated: _onMapCreated,
             markers: _markers,
           ),
