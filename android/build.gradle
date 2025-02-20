@@ -1,0 +1,32 @@
+// android/build.gradle
+
+buildscript {
+    repositories {
+        google()  // Ensure Google repository is listed
+        mavenCentral()
+    }
+    dependencies {
+        // Add the Android Gradle Plugin here (use a compatible version with Flutter)
+        classpath 'com.android.tools.build:gradle:7.4.2'  // Replace with the required version
+    }
+}
+
+allprojects {
+    repositories {
+        google()  // Make sure this is in place
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
