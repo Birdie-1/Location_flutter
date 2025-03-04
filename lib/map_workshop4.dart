@@ -20,7 +20,7 @@ class _SaveLocationState extends State<SaveLocation> {
   @override
   void initState() {
     super.initState();
-    // _getCurrentLocation();
+    _getCurrentLocation();
   }
 
   Future<void> _getCurrentLocation() async {
@@ -51,14 +51,7 @@ class _SaveLocationState extends State<SaveLocation> {
       _currentPosition = LatLng(position.latitude, position.longitude);
     });
 
-    _controller?.animateCamera(
-      CameraUpdate.newCameraPosition(
-        CameraPosition(
-          target: _currentPosition,
-          zoom: 16,
-        ),
-      ),
-    );
+    _controller?.animateCamera(CameraUpdate.newLatLng(_currentPosition));
   } // <--- Closing brace was missing here
 
   Future<void>_saveLocation() async {
@@ -70,7 +63,7 @@ class _SaveLocationState extends State<SaveLocation> {
     }
     HttpOverrides.global = MyHttpOverrides();
 
-    final url = Uri.parse("https://hosting.udru.ac.th/its66040233145/flutter_map/get_location.php");
+    final url = Uri.parse("https://hosting.udru.ac.th/its66040233145/flutter_map/save_location.php");
 
     final response = await http.post(url, body: {
       'name' : _nameController.text,
@@ -130,7 +123,12 @@ class _SaveLocationState extends State<SaveLocation> {
                 )
               ),
             ),
-          )
+          ),
+          Positioned(
+            bottom: 20, 
+            left: 20, 
+            right: 20,
+            child: ElevatedButton(onPressed: _saveLocation, child: Text("บันทึกตำแหน่ง")))
         ],
       ),
     );
