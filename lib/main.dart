@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:geolocator/geolocator.dart';
 // import 'map_workshop1.dart';
 // import 'map_workshop2.dart';
 // import 'map_workshop3.dart';

@@ -11,7 +11,7 @@ class GoogleMapWorkshop1 extends StatefulWidget {
 class _GoogleMapWorkshop1State extends State<GoogleMapWorkshop1> {
 
   GoogleMapController? _controller;
-  static const LatLng _center = const LatLng(17.45193, 102.93105);
+  static const LatLng _center = LatLng(17.45193, 102.93105);
 
   void _onMapCreated(GoogleMapController controller) {
     _controller = controller;

@@ -15,7 +15,7 @@ class SaveLocation extends StatefulWidget {
 class _SaveLocationState extends State<SaveLocation> {
   GoogleMapController? _controller;
   LatLng _currentPosition = LatLng(17.4517, 102.9311);
-  TextEditingController _nameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
 
   @override
   void initState() {
